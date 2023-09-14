@@ -1,0 +1,18 @@
+<nav class="navbar navbar-expand navbar-dark bg-dark shadow rounded-bottom fixed-top" style="">
+    <div class="container-fluid">
+        <div>
+            <a class="navbar-brand" href="{% url 'home' %}">Agustin Rodriguez</a>
+        </div>
+        <div>
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link home {% if pagina_actual == 'home' %}active{% endif %}" href="{% url 'home' %}"><span>&nbsp;Home&nbsp;</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link proyectos {% if pagina_actual == 'proyectos' %}active{% endif %}" href="{% url 'proyectos' %}"><span>&nbsp;Proyectos&nbsp;</span></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
