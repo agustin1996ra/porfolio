@@ -12,3 +12,5 @@ posts/__pycache__/views.cpython-310.pyc
 env*
 venv*
 .env
+laptop.pem
+jstoolchains*
