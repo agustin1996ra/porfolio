@@ -18,6 +18,5 @@ jobs:
         USER: ${{ secrets.IP_PORFOLIO_AWS }}
       run: |
         ssh -i "$KEY" ubuntu@"$USER" '
-        bash deploy_script.sh
-        '
-
+          bash deploy_script.sh
+          '
