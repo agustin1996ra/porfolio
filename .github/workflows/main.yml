@@ -10,11 +10,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
     - name: Run Deployment
       run: |
-        ssh -i ${{ secrets.AWS_PORFOLIO_KEY }} ec2-user@${{ secrets.IP_PORFOLIO_AWS }} 'bash -s' < porfolio/deploy_script.sh
+        ssh -i ${{ secrets.AWS_PORFOLIO_KEY }} ec2-user@${{ secrets.IP_PORFOLIO_AWS }} 'bash -s' < deploy_script.sh
       env:
         ACTIONS_RUNNER_DEBUG: false
 
