@@ -17,6 +17,7 @@ jobs:
         KEY: ${{ secrets.AWS_PORFOLIO_KEY}}
         USER: ${{ secrets.IP_PORFOLIO_AWS }}
       run: |
-        ssh -i "$KEY" ubuntu@"$USER" '
+        echo "$KEY" > KEY && chmod 600 KEY
+        ssh -o StrictHostKeyChecking=no -i KEY ubuntu@${USER} '
           bash deploy_script.sh
           '
