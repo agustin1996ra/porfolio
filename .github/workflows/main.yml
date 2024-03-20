@@ -1,0 +1,20 @@
+name: Deploy porfolio to EC2
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Run Deployment
+      run: |
+        ssh -i ${{ secrets.AWS_PORFOLIO_KEY }} ec2-user@${{ secrets.IP_PORFOLIO_AWS }} 'bash -s' < deploy_script.sh
+      env:
+        ACTIONS_RUNNER_DEBUG: false
+
