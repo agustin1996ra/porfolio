@@ -15,8 +15,11 @@ jobs:
     - name: Run Deployment
       env: 
         KEY: ${{secrets.AWS_PORFOLIO_KEY}}
-        USER: ${{secrets.IP_PORFOLIO_AWS}}
+        HOST: ${{secrets.IP_PORFOLIO_AWS}}
+        
       run: |
-        ssh -o StrictHostKeyChecking=no -i "$KEY" ubuntu@${USER} '
-          bash deploy_script.sh
-          '
+        echo "$KEY" > key && chmod 400 key
+        ssh -i key ubuntu@${HOST} '
+
+            bash deploy_script.sh
+            '
