@@ -16,9 +16,9 @@ jobs:
       env: 
         KEY: ${{secrets.AWS_PORFOLIO_KEY}}
         HOST: ${{secrets.IP_PORFOLIO_AWS}}
-        
+
       run: |
-        echo "$KEY" > key && chmod 400 key
+        echo "$KEY" > key && chmod 600 key
         ssh -i key ubuntu@${HOST} '
 
             bash deploy_script.sh
