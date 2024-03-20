@@ -13,8 +13,11 @@ jobs:
       uses: actions/checkout@v3
 
     - name: Run Deployment
+      env: 
+        KEY: ${{ secrets.AWS_PORFOLIO_KEY}}
+        USER: ${{ secrets.IP_PORFOLIO_AWS }}
       run: |
-        ssh -i ${{ secrets.AWS_PORFOLIO_KEY }} ubuntu@${{ secrets.IP_PORFOLIO_AWS }} '
+        ssh -i "$KEY" ubuntu@"$USER" '
         bash deploy_script.sh
         '
 
