@@ -14,7 +14,7 @@ jobs:
 
     - name: Run Deployment
       run: |
-        ssh -i ${{ secrets.AWS_PORFOLIO_KEY }} ec2-user@${{ secrets.IP_PORFOLIO_AWS }} 'bash -s' < deploy_script.sh
+        ssh -i ${{ secrets.AWS_PORFOLIO_KEY }} ec2-user@${{ secrets.IP_PORFOLIO_AWS }} 'bash -s' < porfolio/deploy_script.sh
       env:
         ACTIONS_RUNNER_DEBUG: false
 
