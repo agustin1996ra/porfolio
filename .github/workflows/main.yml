@@ -15,7 +15,8 @@ jobs:
     - name: Run Deployment
 
       run: |
-        ssh -i ${{ secrets.SSH_PRIVATE_KEY }} ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }} '
+        echo ${{ secrets.SSH_PRIVATE_KEY }} > key && chmod 400 key
+        ssh -i key ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }} '
 
             bash deploy_script.sh
             '
