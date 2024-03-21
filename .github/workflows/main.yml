@@ -8,15 +8,17 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
 
-    - name: Run Deployment
-
-      run: |
-        echo $" secrets.SSH_PRIVATE_KEY " > key && chmod 400 key
-        ssh -i key ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }} '
-
-            bash deploy_script.sh
-            '
+    - name: Deploy to Staging server
+      uses: easingthemes/ssh-deploy@main
+      with:
+        SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+        ARGS: "-rlgoDzvc -i"
+        REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
+        REMOTE_USER: ${{ secrets.REMOTE_USER }}
+        SCRIPT_AFTER: |
+          bash deploy_script.sh
