@@ -20,6 +20,7 @@ jobs:
         ARGS: "-rlgoDzvc -i"
         REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
         REMOTE_USER: ${{ secrets.REMOTE_USER }}
-        TARGET: "/home/ubuntu/porfolio/"
         SCRIPT_AFTER: |
-          bash deploy_script.sh
+          pwd
+          cd porfolio
+          pwd
