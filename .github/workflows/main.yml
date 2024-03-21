@@ -23,9 +23,9 @@ jobs:
         TARGET: "/home/${{ secrets.REMOTE_USER }}/porfolio/"
         SCRIPT_AFTER: |
           pwd
-          source ../env/bin/activate
-          pip install -r requirements.txt
-          python3 manage.py migrate
-          python3 manage.py collectstatic --noinput
+          source env/bin/activate
+          pip install -r porfolio/requirements.txt
+          python3 porfolio/manage.py migrate
+          python3 porfolio/manage.py collectstatic --noinput
           sudo service nginx restart
           sudo supervisorctl reload
