@@ -20,7 +20,12 @@ jobs:
         ARGS: "-rlgoDzvc -i"
         REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
         REMOTE_USER: ${{ secrets.REMOTE_USER }}
+        TARGET: "/home/${{ secrets.REMOTE_USER }}/porfolio"
         SCRIPT_AFTER: |
           pwd
-          cd porfolio
-          pwd
+          source ../env/bin/activate
+          pip install -r requirements.txt
+          python3 manage.py migrate
+          python3 manage.py collectstatic --noinput
+          sudo service nginx restart
+          sudo supervisorctl reload
