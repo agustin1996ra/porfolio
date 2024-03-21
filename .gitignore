@@ -14,3 +14,5 @@ venv*
 .env
 laptop.pem
 jstoolchains*
+db.sqlite3
+deploy_script.sh
