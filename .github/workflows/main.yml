@@ -13,10 +13,9 @@ jobs:
       uses: actions/checkout@v4
 
     - name: Run Deployment
-      env:
-        KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+
       run: |
-        echo KEY > key && chmod 400 key
+        echo $" secrets.SSH_PRIVATE_KEY " > key && chmod 400 key
         ssh -i key ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }} '
 
             bash deploy_script.sh
