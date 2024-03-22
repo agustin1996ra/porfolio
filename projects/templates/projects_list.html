@@ -8,7 +8,7 @@
         Projects
     </div>
     
-    <table class="table m-4">
+    <table class="table p-4">
         <thead>
             <tr>
                 <th>Name</th>
@@ -19,13 +19,13 @@
         </thead>
         <tbody>
             {% for project in object_list %}
-            <tr>
+            <tr class="hover">
                 <td><a href="{{ project.get_absolute_url }}">{{ project.title }}</a></td>
-                <td>{{project.description}}</td>
+                <td><p class="line-clamp-2">{{project.description}}</p></td>
                 <td>
                     <div class="flex flex-row">
                         {% for icon in project.technologies.all %}
-                        <a href="{{ icon.url }}"><img src="{{ icon.src }}" alt="{{ icon.name }}" width="30" height="30"></a>
+                        <div class="badge badge-secondary">{{ icon.name }}</div>
                         {% endfor %}
                     </div>
                 </td>
